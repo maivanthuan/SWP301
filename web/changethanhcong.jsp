@@ -1,24 +1,44 @@
-<%-- 
-    Document   : thanhcong
-    Created on : May 19, 2024, 12:19:34 AM
-    Author     : Admin
---%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.Objects"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Thành Công</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #error-message {
+            color: blue;
+            font-weight: bold;
+            font-size: 24px; /* Tăng kích thước chữ */
+            text-align: center; /* Canh giữa chữ */
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var errorMessage = "<%= Objects.toString(session.getAttribute("error"), "") %>";
+            <% session.removeAttribute("error"); %> // Xóa thông báo lỗi khỏi session sau khi lấy
+
+            if (errorMessage) {
+                var errorDiv = document.getElementById('error-message');
+                errorDiv.innerText = errorMessage;
+                setTimeout(function() {
+                    window.location.href = "index.jsp";
+                }, 2000);
+            }
+        }
+    </script>
 </head>
 <body>
-    <jsp:include page="Navbar.jsp"></jsp:include>
-<h1>Thay đổi thông tin thành công.Sẽ quay lại trang chủ</h1>
-<script>
-         setTimeout(function(){
-            window.location.href = 'index.jsp';
-         }, 5000);
-      </script>
+    <div id="error-message"></div>
 </body>
 </html>

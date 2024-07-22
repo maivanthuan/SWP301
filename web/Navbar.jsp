@@ -8,29 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ListPitchces</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-            crossorigin="anonymous">
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-        crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
         <style>
             /* Định dạng kích thước của hình ảnh sân */
             .stadium-img {
@@ -58,6 +40,72 @@
                 font-family: unset;
                 height: 330px;
             }
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-radius: 5px;
+            }
+
+            .pagination a,
+            .pagination span {
+                margin: 0 5px;
+                padding: 8px 16px;
+                text-decoration: none;
+                color: white;
+                background-color: #4caf50; /* Green color */
+                border: 1px solid #4caf50;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+            }
+
+            .pagination a:hover {
+                background-color: #45a049; /* Darker green */
+            }
+
+            .pagination span {
+                background-color: #2e7d32; /* Darker green for the current page indicator */
+            }
+
+            .pagination a:visited {
+                color: white;
+            }
+
+            /* Định dạng cho nút đăng nhập và đăng ký */
+            .nav-buttons {
+                display: flex;
+                align-items: center;
+                gap: 10px; /* Khoảng cách giữa hai nút */
+            }
+
+            .nav-buttons a {
+                white-space: nowrap;
+                padding: 8px 16px;
+                font-size: 14px; /* Kích thước chữ */
+                border-radius: 4px;
+            }
+
+            .btn-login {
+                background-color: #007bff; /* Màu nền của nút đăng nhập */
+                color: white;
+            }
+
+            .btn-register {
+                background-color: #28a745; /* Màu nền của nút đăng ký */
+                color: white;
+            }
+            .btn-login:hover {
+                background-color: #000033; /* Màu nền khi di chuột vào nút đăng nhập */
+            }
+
+            .btn-register:hover {
+                background-color: #dc3545; /* Màu nền khi di chuột vào nút đăng ký */
+            }
+
+
         </style>
     </head>
     <body>
@@ -65,7 +113,7 @@
         <div class="header">
             <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
                 <!-- logo -->
-                <a class="navbar-brand" href="#"><img src="img/logo/logo5b.jpg" alt="Logo" style="height:70px; margin:15px"></a>       
+                <a class="navbar-brand" href="index.jsp"><img src="img/logo/logo5b.jpg" alt="Logo" style="height:70px; margin:15px"></a>       
                 <!-- end logo -->   
 
                 <!-- search -->
@@ -79,58 +127,73 @@
                 <div style="margin-right: 20px">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="banhang.jsp"><img src="img/logo/iconquanao.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
+                            <a class="nav-link" href="searchPitch2.jsp"><img src="img/logo/1200px-Search_Icon.svg.png" alt="List sân" style="height:30px; margin-left:15px"><br/>
+                                Tìm Sân
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="FindCompetitorServlet"><img src="img/logo/timdoithu.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
+                                Tìm đối thủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="loadproduct"><img src="img/logo/iconquanao.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
                                 Bán hàng
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="listPitch.jsp"><img src="img/logo/iconsanbong.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
+                            <a class="nav-link" href="PitchServlet"><img src="img/logo/iconsanbong.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
                                 Sân bóng
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            
 
-
-
-                            <%
-                                                Object obj = session.getAttribute("khachHang");
-                                                Account khachHang = null;
-                                                if (obj!=null)
-                                                        khachHang = (Account)obj;
+                        <%
+                                            Object obj = session.getAttribute("khachHang");
+                                            Account khachHang = null;
+                                            if (obj!=null)
+                                                    khachHang = (Account)obj;
 						
-                                                if(khachHang==null){
-                            %>
-                            <a class="btn btn-primary" style="white-space: nowrap;" href="login.jsp">
+                                            if(khachHang==null){
+                        %>
+                        <div class="nav-buttons">
+                            <a class="btn btn-login" href="login.jsp">
                                 Đăng nhập
                             </a>
-                            <a class="btn btn-primary" href="Register.jsp">Đăng ký</a>
-                            <%} else { %>
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="img/logo/icontaikhoan_1.png" alt="Tai khoan" style="height:30px; margin-left: 15px"> <br/>
-                                Tài khoản
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="changePassword.jsp">Thay đổi mật khẩu</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="change.jsp">Thông tin cá nhân</a>
-
-                                <a class="dropdown-item" href="UserController?hanhDong=dang-xuat">Đăng xuất</a>
-                            </div>
-                            <% }%>
-                        </li>
+                            <a class="btn btn-register" href="Register.jsp">Đăng ký</a>
+                        </div>
+                        <%} else { %>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="img/logo/icontaikhoan_1.png" alt="Tai khoan" style="height:30px; margin-left: 15px"> <br/>
+                            Tài khoản
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- Điểm thay đổi: Thêm các thẻ <li> bao quanh thẻ <a> -->
+                            <li><a class="dropdown-item" href="changePassword.jsp">Thay đổi mật khẩu</a></li>
+                            <li><a class="dropdown-item" href="change.jsp">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="adminBookingPitchHistoryServlet?hanhdong=loc&userID=${khachHang.ID}">Lịch Sử Đặt Sân</a></li>
+                            <li><a class="dropdown-item" href="adminProductPurchaseHistoryServlet?hanhdong=loc&userID=${khachHang.ID}">Lịch Sử Mua Hàng</a></li>
+                            <li><a class="dropdown-item" href="UserController?hanhDong=dang-xuat">Đăng xuất</a></li>
+                        </ul>
+                        <% }%>
                         <li class="nav-item">
-                            <a class="nav-link" href="giohang.jsp"><img src="img/logo/icongiohang.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
+                            <a class="nav-link" href="show"><img src="img/logo/icongiohang.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
                                 Giỏ Hàng
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="UserController?hanhDong=dang-xuat"><img src="img/logo/pngtree-vector-logout-icon-png-image_958608.jpg" alt="List sân" style="height:30px; margin-left:15px"><br/>
+                                Đăng Xuất 
+                            </a>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- end account, giỏ hàng, list sân -->
             </nav>
         </div>
+        <!-- End Navbar -->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+DlPUoMHpY5F0RvI96EKsEnFnvL4" crossorigin="anonymous"></script>
     </body>
 </html>

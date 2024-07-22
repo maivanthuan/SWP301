@@ -1,6 +1,13 @@
 <%@page import="model.Account"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    Account khachHangg = (Account) session.getAttribute("khachHang");
+    if (khachHangg == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>

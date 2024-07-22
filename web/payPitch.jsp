@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="model.Account"%>
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -82,37 +83,47 @@
                 padding: 20px;
             }
         }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: black; /* Đặt màu đen cho tiêu đề */
+        }
+        .container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: black; /* Đặt màu đen cho giá tiền */
+        }
+        .container button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .container button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h3 class="text-center" style="color: #ffd700;">Thanh Toán Sân Bóng</h3>
-        <form action="#" method="post">
-            <div class="form-group">
-                <label for="fieldNumber">Sân Số 1</label>
-            </div>
-            <div class="form-group">
-                <label class="info-label" for="hovaten">Họ và tên:</label>
-                <input type="text" id="hovaten" name="hovaten" required>
-            </div>
-            <div class="form-group">
-                <label class="info-label" for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label class="info-label" for="sdt">Số điện thoại:</label>
-                <input type="tel" id="sdt" name="sdt" required>
-            </div>
-            <div class="form-group">
-                <label class="info-label" for="diachi">Địa chỉ:</label>
-                <input type="text" id="diachi" name="diachi" required>
-            </div>
-            <button type="submit">Thanh Toán</button> <!-- Nút Thanh Toán -->
-        </form>
-        <div class="qr-code">
-            <h5 class="info-label">Mã QR Code</h5>
-            <img src="img/iconmaqr.jpg" alt="QR Code" style="height:200px">
-        </div>
-    </div>
+    <h2>Thanh toán ngay</h2>
+    <p>Tổng số tiền: ${total}</p>
+    <form action="payment" method="get">
+        <input type="hidden" name="amount" value="${total*100}">
+        <input type="hidden" name="hanhdong" value="pitch">
+        <button type="submit">Thanh toán</button>
+    </form>
+</div>
 </body>
 </html>

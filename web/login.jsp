@@ -108,17 +108,11 @@
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-center text-center mt-4 pt-1">
-                                    <a href=https://accounts.google.com/o/oauth2/auth?scope=email profile openid
-
-                                       &redirect_uri=http://localhost:9999/Pitch/login
-
-                                       &response_type=code
-
-                                       &client_id=414769522333-ki6jo5h5inclr9udgv2mmmn66nrv766q.apps.googleusercontent.com
-
-                                       &approval_prompt=force type="button" class="login-with-google-btn" style="color: black">
-                                        Đăng Nhập Bằng Google
-                                    </a>
+                                    <div class="d-flex justify-content-center text-center mt-4 pt-1">
+    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http%3A%2F%2Flocalhost%3A9999%2FDemo%2FLoginGoogleHandler&response_type=code&client_id=456948524553-jppq9urgcnh7ob7n6eg45vb04hnsaite.apps.googleusercontent.com&prompt=consent" type="button" class="login-with-google-btn" style="color: black">
+        Đăng Nhập Bằng Google
+    </a>
+</div>
                                 </div>
                             </div>
                         </div>

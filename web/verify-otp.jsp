@@ -26,7 +26,8 @@
                                 <p class="text-danger ml-1"><%= request.getAttribute("message") %></p>
                             <% } %>
                             <div class="panel-body">
-                                <form id="register-form" action="verify-otp" role="form" autocomplete="off" class="form" method="post">
+                                <form id="register-form" action="forget-password" role="form" autocomplete="off" class="form" method="post">
+                                    <input type="hidden" name="hanhDong" value="gui-otp" >
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
@@ -34,7 +35,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Submit" type="submit">
+                                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
                                     </div>
                                     <input type="hidden" class="hide" name="token" id="token" value="">
                                 </form>

@@ -34,7 +34,8 @@
                             </h1>
                         </div>
                         <div class="pt-3 pb-3">
-                            <form class="form-horizontal" action="reset-password" method="POST">
+                            <form class="form-horizontal" action="forget-password" method="POST">
+                                <input type="hidden" name="hanhDong" value="mat-khau-moi" >
                                 <!-- New Password Input -->
                                 <div class="form-group row justify-content-center px-3">
                                     <div class="col-9 px-0">
@@ -65,7 +66,7 @@
                             <div class="pt-2">
                                 <div class="row justify-content-center">
                                     <h5>
-                                        Don't have an Account?<span><a href="Register.jsp" class="text-danger"> Register Now!</a></span>
+                                        Don't have an Account?<span><a href="#" class="text-danger"> Register Now!</a></span>
                                     </h5>
                                 </div>
                                 <div class="row justify-content-center align-items-center pt-4 pb-5">
