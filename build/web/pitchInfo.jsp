@@ -3,8 +3,10 @@
     Created on : May 17, 2024, 7:49:07 AM
     Author     : nguye
 --%>
-
+<%@page import="model.Account"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.time.LocalDate" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -136,140 +138,220 @@
                 background-color: #0056b3;
             }
             body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        .rating {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .rating > input {
-            display: none;
-        }
-        .rating > label {
-            cursor: pointer;
-            font-size: 2.5rem;
-            color: #ccc;
-            transition: color 0.3s;
-        }
-        .rating > label:hover,
-        .rating > input:checked ~ label {
-            color: #ffdd00;
-        }
-        .rating > input:checked ~ label:hover,
-        .rating > input:checked ~ label:hover ~ label {
-            color: #ccc;
-        }
-        .average-rating {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            text-align: center;
-            color: #555;
-        }
-        .comment-button {
-            display: block;
-            margin-top: 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .comment-button:hover {
-            background-color: #0056b3;
-        }
-        .comment-dropdown {
-            display: none;
-            margin-top: 10px;
-        }
-        .comment-dropdown textarea {
-            width: 100%;
-            height: 100px;
-            resize: none;
-            margin-top: 5px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-            font-size: 1rem;
-        }
-        .comment-dropdown button {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .comment-dropdown button:hover {
-            background-color: #218838;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        .question-form {
-            width: 100vw;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .question-form h3 {
-            margin-bottom: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .question-form .form-group {
-            margin-bottom: 20px;
-        }
-        .question-form label {
-            font-weight: bold;
-        }
-        .question-form textarea {
-            width: 100%;
-            height: 150px;
-            resize: none;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-            font-size: 1rem;
-        }
-        .question-form button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .question-form button:hover {
-            background-color: #0056b3;
-        }
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
+            }
+            .rating {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+            .rating > input {
+                display: none;
+            }
+            .rating > label {
+                cursor: pointer;
+                font-size: 2.5rem;
+                color: #ccc;
+                transition: color 0.3s;
+            }
+            .rating > label:hover,
+            .rating > input:checked ~ label {
+                color: #ffdd00;
+            }
+            .rating > input:checked ~ label:hover,
+            .rating > input:checked ~ label:hover ~ label {
+                color: #ccc;
+            }
+            .average-rating {
+                font-size: 1.5rem;
+                margin-top: 10px;
+                text-align: center;
+                color: #555;
+            }
+            .comment-button {
+                display: block;
+                margin-top: 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            .comment-button:hover {
+                background-color: #0056b3;
+            }
+            .comment-dropdown {
+                display: none;
+                margin-top: 10px;
+            }
+            .comment-dropdown textarea {
+                width: 100%;
+                height: 100px;
+                resize: none;
+                margin-top: 5px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+            }
+            .comment-dropdown button {
+                background-color: #28a745;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            .comment-dropdown button:hover {
+                background-color: #218838;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
+            }
+            .question-form {
+                width: 100vw;
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .question-form h3 {
+                margin-bottom: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+            .question-form .form-group {
+                margin-bottom: 20px;
+            }
+            .question-form label {
+                font-weight: bold;
+            }
+            .question-form textarea {
+                width: 100%;
+                height: 150px;
+                resize: none;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-family: Arial, sans-serif;
+                font-size: 1rem;
+            }
+            .question-form button {
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 1rem;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            .question-form button:hover {
+                background-color: #0056b3;
+            }
+
+
+            .container {
+                width: 100%;
+                background-color: white;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            .grid-item {
+                width:  100%;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+
+                border-radius: 8px;
+            }
+            h3 {
+                margin-top: 0;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+            }
+            input[type="date"], button {
+                margin-bottom: 10px;
+                padding: 10px;
+                font-size: 16px;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
         </style>
     </head>
     <body>
-        <jsp:include page="Navbar.jsp"></jsp:include>
+        <!-- Navbar -->
+
+        <!-- End Navbar -->
+        <%
+            Object obj = session.getAttribute("khachHang");
+            Account khachHang = null;
+            if (obj != null) {
+                khachHang = (Account) obj;
+            }
+
+            if (khachHang != null) {
+                int role = khachHang.getRole(); // Lấy vai trò của khách hàng
+
+                // Kiểm tra vai trò và include navbar tương ứng
+                if (role == 2) {
+        %>
+        <jsp:include page="Navbar_1.jsp" /> <%-- Thay thế bằng Navbar cho vai trò 2 --%>
+        <%
+                } else {
+        %>
+        <jsp:include page="Navbar.jsp" /> <%-- Thay thế bằng Navbar mặc định cho các vai trò khác --%>
+        <%
+                }
+            } else {
+        %>
+        <jsp:include page="Navbar.jsp" /> <%-- Thay thế bằng Navbar mặc định cho người dùng chưa đăng nhập --%>
+        <h1>Bạn chưa đăng nhập vào hệ thống. Vui lòng quay lại trang chủ!</h1>
+        <%
+            }
+
+            // Nếu đã đăng nhập, lấy thông tin khách hàng
+            if (khachHang != null) {
+                String baoLoi = request.getAttribute("baoLoi") + "";
+                baoLoi = (baoLoi.equals("null")) ? "" : baoLoi;
+
+                String hoVaTen = khachHang.getName();
+                String gioiTinh = khachHang.getGender();
+                String ngaySinh = khachHang.getDateOfBirth();
+                String dienThoai = khachHang.getPhoneNumber();
+                String email = khachHang.getEmail();
+            }
+        %>
 
 
-        <a href="trangchu.jsp">Trang chủ </a>> Sân bóng đá 5 người
+
+
+        <a href="index.jsp">Trang chủ </a>> Sân bóng đá 5 người
 
         <div class="container-fluid" style="margin-top: 30px">
             <div class="row">
@@ -301,9 +383,9 @@
                 <!-- Phần thông tin sân -->
                 <div class="col-md-4" id="stadium-info" >
                     <h2>Thông tin sân</h2>
-                    <p><strong>Giờ mở cửa:</strong> 8:00 AM</p>
+                    <p><strong>Giờ mở cửa:</strong> 7:00 AM</p>
                     <p><strong>Giờ đóng cửa:</strong> 10:00 PM</p>
-                    <p><strong>Giá sân:</strong> $50/giờ</p>
+
                     <p><strong>Dịch vụ:</strong> Đồ uống, Thuê thiết bị thể thao</p>
                 </div>
             </div>
@@ -311,198 +393,74 @@
 
         <!-- đặt sân theo yêu cầu -->
         <div class="container">
-            <div class="reservation-form">
-                <h3>Đặt sân theo yêu cầu</h3>
-                <form action="payPitch.jsp" method="post">
-                    <div class="form-group">
-                        <label for="fullname">Họ và tên</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Số điện thoại</label>
-                        <input type="text" class="form-control" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="bookingDate">Chọn ngày</label>
-                        <input type="date" class="form-control" id="bookingDate" name="bookingDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="hours">Số giờ đặt</label>
-                        <select class="form-control" id="hours" name="hours" required>
-                            <option value="1">1 giờ</option>
-                            <option value="1.5">1,5 giờ</option>
-                            <option value="2">2 giờ</option>
-                            <option value="2.5">2,5 giờ</option>
-                            <option value="3">3 giờ</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="notes">Ghi chú</label>
-                        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Đặt sân</button>
+
+            <div class="grid-item">
+                <%
+                          // Lấy ngày hiện tại dưới dạng yyyy-mm-dd
+                          String currentDate = LocalDate.now().toString();
+                %>
+                <h3>Chọn Ngày</h3>
+                <form action="BookingTimeServlet" method="post">
+                    <input type="hidden" name="action" value="2" />
+                    <input type="hidden" name="pitch" value="${pitch.pitchID}">
+                    <input type="date" name="date" required min="<%= currentDate %>" />
+                    <button type="submit">Kiểm tra</button>
                 </form>
-            </div>
-            <div class="time-slot-table">
-                   <h3>Chọn Khung Giờ và Giá</h3>
-                   <table class="table" >
-                <thead>
-                    <tr>
-                        <th>Thời Gian</th>
-                        <th>Giá</th>
-                        <th>Trạng Thái</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>07:00 - 08:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>08:00 - 09:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>09:00 - 10:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>10:00 - 11:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>11:00 - 12:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>12:00 - 13:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>13:00 - 14:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>14:00 - 15:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>15:00 - 16:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>16:00 - 17:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>17:00 - 18:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>18:00 - 19:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>19:00 - 20:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>20:00 - 21:00</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                    <tr>
-                        <td>21:00 - 21:30</td>
-                        <td>800K</td>
-                        <td>Available</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-        
-        <!-- đánh giá sân -->
-        <div class="container-fluid" style="font-size: 30px; background-color:#FFFFFF">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h3 class="text-center">Đánh Giá Sân</h3>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5">&#9733;</label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4">&#9733;</label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3">&#9733;</label>
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2">&#9733;</label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1">&#9733;</label>
-                </div>
-                <div class="average-rating">Trung Bình: <span id="averageRating">0</span> sao</div>
-                <button class="comment-button btn btn-primary">Ghi Nhận Xét</button>
-                <div class="comment-dropdown">
-                    <textarea class="form-control" placeholder="Nhập nhận xét của bạn"></textarea>
-                    <button class="btn btn-success mt-2">Gửi</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Xử lý khi người dùng chọn sao
-            $('input[name="rating"]').change(function() {
-                var rating = $(this).val();
-                $('#averageRating').text(rating);
-            });
 
-            // Xử lý khi người dùng bấm nút Ghi Nhận Xét
-            $('.comment-button').click(function() {
-                $('.comment-dropdown').toggle();
-            });
-        });
-    </script>
-   <!-- end đánh giá sân -->
-   
-   <!-- hỏi đáp -->
-   <div class="container" >
-        <div class="question-form">
-            <h3>Để Lại Câu Hỏi</h3>
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="fullname">Họ và tên</label>
-                    <input type="text" class="form-control" id="fullname" name="fullname" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="question">Câu Hỏi</label>
-                    <textarea class="form-control" id="question" name="question" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Gửi Câu Hỏi</button>
+            </div>
+
+            <script>
+                // Lấy ngày hiện tại dưới dạng yyyy-mm-dd
+                const today = new Date().toISOString().split('T')[0];
+                // Đặt giá trị min cho input date
+                document.querySelector('input[type="date"]').setAttribute('min', today);
+            </script>
+        </div>
+        <div>
+
+            <form action="feedbackPitch" method="post">
+                <input  type="hidden" name="action" value="addNew">
+                <input  type="hidden" name="pitch" value="addNew">
+                <input  type="hidden" name="pitchID" value="${pitchID}"> 
+                <input  type="hidden" name="khachHang" value="${khachHang}">
+                <input class="feedbackPitch" type="text" name="feedback" required="required">
+                <button type="submit" value="feedback">Gui Nhan Xet</button>
             </form>
+            <form action="feedbackPitch" method="get">
+
+                <input  type="hidden" name="pitchID" value="${pitchID}"> 
+                <input  type="hidden" name="khachHang" value="${khachHang}">
+
+                <button type="submit" value="feedback">Xem feedback</button>
+            </form>
+            <section class="featured spad">
+                <div class="row">
+                    <c:forEach items="${listF}" var="f">
+                        <div class="col-12">
+                            <div class="review">
+                                <div class="review-content">
+                                    <h5>${adal.selectById1(f.getUserID()).getName()}</h5>
+                                    <p>${f.getContent()}</p>
+                                </div>
+                                <c:if test="${f.getUserID() == khachHang.getID()}">
+                                    <form action="deletefeedbackPitch" method="doGet">
+                                        <div class="review-options">
+                                            <button class="delete-btn">
+                                                <img src="img/bin.png" alt="Delete" style="width: 24px; height: 24px;">
+                                            </button>
+                                        </div>
+                                        <input  type="hidden" name="pitchID" value="${pitchID}"> 
+                                        <input  type="hidden" name="khachHang" value="${khachHang}">
+                                        <input  type="hidden" name="fID" value="${f.getFeedbackID()}">
+                                    </form>
+                                </c:if>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+            </section>
         </div>
-    </div>
-        <jsp:include page="footer.jsp"></jsp:include>
+                <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
